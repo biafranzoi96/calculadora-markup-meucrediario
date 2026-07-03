@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Markup — Meu Crediário</title>
+  <meta name="description" content="Calcule o preço de venda ideal para seus produtos e entenda tudo que forma esse preço.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="img/logo-symbol-alt.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="header-inner">
+        <img src="img/logo-symbol-alt.png" alt="MeuCrediário" class="logo-img">
+        <div class="header-divider"></div>
+        <span class="header-page-title">Calculadora de Markup</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="card form-card">
+        <h2 class="card-title">Dados do produto</h2>
+
+        <div class="field">
+          <label for="custo">Custo do produto</label>
+          <div class="input-prefix">
+            <span>R$</span>
+            <input type="text" id="custo" placeholder="0,00" inputmode="decimal">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-header">
+            <label>Outros custos <span class="optional">(opcional)</span></label>
+            <button type="button" id="btn-adicionar" class="btn-link">+ Adicionar</button>
+          </div>
+          <div id="custos-extras" class="custos-extras"></div>
+          <p class="field-hint">Frete, comissão, taxas, embalagem, etc.</p>
+        </div>
+
+        <div class="field">
+          <label for="markup">Markup desejado</label>
+          <div class="input-suffix">
+            <input type="number" id="markup" placeholder="0" min="0" max="99.9" step="0.1" inputmode="decimal">
+            <span>%</span>
+          </div>
+          <p class="field-hint">Percentual de lucro sobre o preço de venda final</p>
+          <div class="sugestoes" id="sugestoes">
+            <button type="button" class="sugestao" data-valor="43">43% <span>Óculos de sol</span></button>
+            <button type="button" class="sugestao" data-valor="50">50% <span>Revenda básica</span></button>
+            <button type="button" class="sugestao" data-valor="60">60% <span>Moda padrão</span></button>
+            <button type="button" class="sugestao" data-valor="67">67% <span>Boutique / lentes</span></button>
+            <button type="button" class="sugestao" data-valor="75">75% <span>Premium</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card resultado-card" id="resultado" hidden>
+        <h2 class="card-title">Composição do preço</h2>
+
+        <div class="barra-wrapper">
+          <div class="barra" id="barra">
+            <div class="barra-custos" id="barra-custos"></div>
+            <div class="barra-lucro" id="barra-lucro"></div>
+          </div>
+          <div class="barra-legenda">
+            <span class="legenda-custos">Custos</span>
+            <span class="legenda-lucro">Lucro</span>
+          </div>
+        </div>
+
+        <div class="breakdown" id="breakdown"></div>
+
+        <div class="preco-final">
+          <div class="preco-label">Preço de venda</div>
+          <div class="preco-valor" id="preco-valor">R$ 0,00</div>
+        </div>
+
+        <div class="metricas">
+          <div class="metrica">
+            <div class="metrica-label">Lucro</div>
+            <div class="metrica-valor" id="lucro-valor">R$ 0,00</div>
+          </div>
+          <div class="metrica-sep"></div>
+          <div class="metrica">
+            <div class="metrica-label">Margem sobre venda</div>
+            <div class="metrica-valor" id="margem-venda">0%</div>
+          </div>
+          <div class="metrica-sep"></div>
+          <div class="metrica">
+            <div class="metrica-label">Markup sobre custo</div>
+            <div class="metrica-valor" id="markup-custo">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card aviso-card" id="aviso-invalido" hidden>
+        <p class="aviso-texto">⚠️ O markup não pode ser 100% ou mais — o preço de venda seria infinito.</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>Uma ferramenta gratuita do <a href="https://meucrediario.com.br/" target="_blank" rel="noopener">Meu Crediário</a></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
